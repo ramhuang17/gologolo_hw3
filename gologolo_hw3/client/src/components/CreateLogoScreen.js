@@ -13,7 +13,8 @@ const ADD_LOGO = gql`
         $borderRadius: Int!,
         $borderWidth: Int!,
         $padding: Int!,
-        $margins: Int!) {
+        $margins: Int!
+        ) {
         addLogo(
             text: $text,
             color: $color,
@@ -23,7 +24,8 @@ const ADD_LOGO = gql`
             borderRadius: $borderRadius,
             borderWidth: $borderWidth,
             padding: $padding,
-            margins: $margins) {
+            margins: $margins
+            ) {
             _id
         }
     }
@@ -34,12 +36,12 @@ class CreateLogoScreen extends Component {
     render() {
         let text, color, fontSize, backgroundColor, borderColor, borderRadius, borderWidth, padding, margins;
         return (
-            <Mutation mutation={ADD_LOGO} onCompleted={() => this.props.history.push('/')}>
+            <Mutation mutation={ADD_LOGO} onCompleted={(data) => {console.log(data);this.props.history.push('/')}}>
                 {(addLogo, { loading, error }) => (
                     <div className="container">
                         <div className="panel panel-default">
                             <div className="panel-heading">
-                                <h4><Link to="/">Home</Link></h4>
+                                <h4><Link to="/"><button>Home</button></Link></h4>
                                 <h3 className="panel-title">
                                     Create Logo
                             </h3>
@@ -52,10 +54,10 @@ class CreateLogoScreen extends Component {
                                     color.value = "";
                                     fontSize.value = "";
                                     backgroundColor.value = "";
-                                    borderColor.value = "";
-                                    borderRadius.value = "";
-                                    borderWidth.value = "";
-                                    padding.value ="";
+                                    borderColor = "";
+                                    borderRadius = "";
+                                    borderWidth = "";
+                                    padding = "";
                                     margins = "";
                                 }}>
                                     <div className="form-group">
@@ -72,7 +74,7 @@ class CreateLogoScreen extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="fontSize">Font Size:</label>
-                                        <input type="number" className="form-control" name="fontSize" ref={node => {
+                                        <input type="number" min="2" max="144" className="form-control" name="fontSize" ref={node => {
                                             fontSize = node;
                                         }} placeholder="Font Size" />
                                     </div>
@@ -84,33 +86,33 @@ class CreateLogoScreen extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="borderColor">Border Color:</label>
-                                        <input type="color" className="form-control" name="color" ref={node => {
+                                        <input type="color" className="form-control" name="borderColor" ref={node =>{
                                             borderColor = node;
                                         }} placeholder="Border Color" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="borderRadius">Border Radius:</label>
-                                        <input type="number" className="form-control" name="borderRadius" ref={node => {
+                                        <input type="number" min="2" max="50" className="form-control" name="borderRadius" ref={node => {
                                             borderRadius = node;
-                                        }} placeholder="Border Radius" />
+                                        }} placeholder = "Border Radius" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="borderWidth">Border Width:</label>
-                                        <input type="number" className="form-control" name="borderWidth" ref={node => {
+                                        <input type="number" min="2" max="50" className="form-control" name="borderWidth" ref={node => {
                                             borderWidth = node;
-                                        }} placeholder="Border Width" />
+                                        }} placeholder = "Border Width" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="padding">Padding:</label>
-                                        <input type="number" className="form-control" name="padding" ref={node => {
+                                        <input type="number" min="2" max="50" className="form-control" name="padding" ref={node => {
                                             padding = node;
-                                        }} placeholder="Padding" />
+                                        }} placeholder = "Padding" />
                                     </div>
                                     <div className="form-group">
                                         <label htmlFor="margins">Margins:</label>
-                                        <input type="number" className="form-control" name="margins" ref={node => {
+                                        <input type="number" min="2" max="50" className="form-control" name="margins" ref={node => {
                                             margins = node;
-                                        }} placeholder="Margins" />
+                                        }} placeholder = "Margins" />
                                     </div>
                                     <button type="submit" className="btn btn-success">Submit</button>
                                 </form>

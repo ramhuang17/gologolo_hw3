@@ -31,7 +31,8 @@ const UPDATE_LOGO = gql`
         $borderRadius: Int!,
         $borderWidth: Int!,
         $padding: Int!,
-        $margins: Int!) {
+        $margins: Int!,
+        ) {
             updateLogo(
                 id: $id,
                 text: $text,
@@ -42,7 +43,8 @@ const UPDATE_LOGO = gql`
                 borderRadius: $borderRadius,
                 borderWidth: $borderWidth,
                 padding: $padding,
-                margins: $margins) {
+                margins: $margins,
+                ) {
                     lastUpdate
                 }
         }
@@ -59,12 +61,12 @@ class EditLogoScreen extends Component {
                     if (error) return `Error! ${error.message}`;
 
                     return (
-                        <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={() => this.props.history.push(`/`)}>
+                        <Mutation mutation={UPDATE_LOGO} key={data.logo._id} onCompleted={(data) => {console.log(data);this.props.history.push(`/`)}}>
                             {(updateLogo, { loading, error }) => (
                                 <div className="container">
                                     <div className="panel panel-default">
                                         <div className="panel-heading">
-                                            <h4><Link to="/">Home</Link></h4>
+                                            <h4><Link to="/"><button>Home</button></Link></h4>
                                             <h3 className="panel-title">
                                                 Edit Logo
                                         </h3>
@@ -76,12 +78,12 @@ class EditLogoScreen extends Component {
                                                 text.value = "";
                                                 color.value = "";
                                                 fontSize.value = "";
-                                                backgroundColor = "";
-                                                borderColor = "";
-                                                borderRadius = "";
-                                                borderWidth = "";
-                                                padding = "";
-                                                margins = "";
+                                                backgroundColor.value = "";
+                                                borderColor.value = "";
+                                                borderRadius.value = "";
+                                                borderWidth.value = "";
+                                                padding.value = "";
+                                                margins.value = "";                                                
                                             }}>
                                                 <div className="form-group">
                                                     <label htmlFor="text">Text:</label>
@@ -97,7 +99,7 @@ class EditLogoScreen extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="fontSize">Font Size:</label>
-                                                    <input type="text" className="form-control" name="fontSize" ref={node => {
+                                                    <input type="number" min="2" max="144" className="form-control" name="fontSize" ref={node => {
                                                         fontSize = node;
                                                     }} placeholder="Font Size" defaultValue={data.logo.fontSize} />
                                                 </div>
@@ -115,25 +117,25 @@ class EditLogoScreen extends Component {
                                                 </div>
                                                 <div className="form-group">
                                                     <label htmlFor="borderRadius">Border Radius:</label>
-                                                    <input type="text" className="form-control" name="borderRadius" ref={node => {
+                                                    <input type="number" min="2" max="50" className="form-control" name="borderRadius" ref={node => {
                                                         borderRadius = node;
                                                     }} placeholder="Border Radius" defaultValue={data.logo.borderRadius} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="borderWidth">Border Width:</label>
-                                                    <input type="text" className="form-control" name="borderWidth" ref={node => {
+                                                    <label htmlFor="borderWidth">Border Width</label>
+                                                    <input type="number" min="2" max="50" className="form-control" name="borderWidth" ref={node => {
                                                         borderWidth = node;
                                                     }} placeholder="Border Width" defaultValue={data.logo.borderWidth} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="fontSize">Padding:</label>
-                                                    <input type="text" className="form-control" name="padding" ref={node => {
+                                                    <label htmlFor="padding">Padding:</label>
+                                                    <input type="number" min="2" max="50" className="form-control" name="padding" ref={node => {
                                                         padding = node;
                                                     }} placeholder="Padding" defaultValue={data.logo.padding} />
                                                 </div>
                                                 <div className="form-group">
-                                                    <label htmlFor="fontSize">Margins:</label>
-                                                    <input type="text" className="form-control" name="margins" ref={node => {
+                                                    <label htmlFor="margins">Margins:</label>
+                                                    <input type="number" min="2" max="50" className="form-control" name="margins" ref={node => {
                                                         margins = node;
                                                     }} placeholder="Margins" defaultValue={data.logo.margins} />
                                                 </div>

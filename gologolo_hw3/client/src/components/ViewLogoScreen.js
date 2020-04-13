@@ -43,7 +43,7 @@ class ViewLogoScreen extends Component {
                         <div className="container">
                             <div className="panel panel-default">
                                 <div className="panel-heading">
-                                    <h4><Link to="/">Home</Link></h4>
+                                    <h4><Link to="/"><button>Home</button></Link></h4>
                                     <h3 className="panel-title">
                                         View Logo
                                     </h3>
@@ -67,7 +67,7 @@ class ViewLogoScreen extends Component {
                                         <dt>Padding:</dt>
                                         <dd>{data.logo.padding}</dd>
                                         <dt>Margins:</dt>
-                                        <dd>{data.logo.margins}</dd>
+                                        <dd>{data.logo.margins}</dd>                                        
                                         <dt>Last Updated:</dt>
                                         <dd>{data.logo.lastUpdate}</dd>
                                     </dl>
