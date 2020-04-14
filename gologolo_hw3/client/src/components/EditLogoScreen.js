@@ -79,12 +79,12 @@ class EditLogoScreen extends Component {
     }
 
     handleTextColorChange = (event) => {
-        console.log("handleTextColorChange to " + event.target.value);
+        //console.log("handleTextColorChange to " + event.target.value);
         this.setState({ logoC: event.target.value }, this.completeUserEditing);
     }
 
     handleFontSizeChange = (event) => {
-        console.log("handleFontSizeChange to " + event.target.value);
+        //console.log("handleFontSizeChange to " + event.target.value);
         if(this.state.logoFs!=="")
             this.setState({ logoFs: event.target.value }, this.completeUserEditing);
         return ;
@@ -92,38 +92,38 @@ class EditLogoScreen extends Component {
 
     //new stuff
     handleBackgroundColorChange = (event) => {
-        console.log("handleBackgroundColorChange to " + event.target.value);
+        //console.log("handleBackgroundColorChange to " + event.target.value);
         this.setState({logoBgc: event.target.value}, this.completeUserEditing);
     }
 
     handleBorderColorChange = (event) => {
-        console.log("handleBorderColorChange to " + event.target.value);
+        //console.log("handleBorderColorChange to " + event.target.value);
         this.setState({logoBc: event.target.value}, this.completeUserEditing);
     }
 
     handleBorderRadiusChange = (event) => {
-        console.log("handleBorderRadiusChange to " + event.target.value);
+        //console.log("handleBorderRadiusChange to " + event.target.value);
         if(this.state.logoBr!=="")
             this.setState({logoBr: event.target.value}, this.completeUserEditing);
         return ;
     }
 
     handleBorderWidthChange = (event) => {
-        console.log("handleBorderWidthkChange to " + event.target.value);
+        //console.log("handleBorderWidthkChange to " + event.target.value);
         if(this.state.logoBw!=="")    
             this.setState({logoBw: event.target.value}, this.completeUserEditing);
         return ;
     }
 
     handlePaddingChange = (event) => {
-        console.log("handlePaddingChange to " + event.target.value);
+        //console.log("handlePaddingChange to " + event.target.value);
         if(this.state.logoP!=="")
             this.setState({logoP: event.target.value}, this.completeUserEditing);
         return ;
     }
 
     handleMarginChange = (event) => {
-        console.log("handleMarginChange to " + event.target.value);
+        //console.log("handleMarginChange to " + event.target.value);
         if(this.state.logoM!=="")
             this.setState({logoM: event.target.value}, this.completeUserEditing);
         return ;
@@ -202,11 +202,11 @@ class EditLogoScreen extends Component {
                                                 Edit Logo
                                         </h3>
                                         </div>
-                                        <div className="panel-body col s4" style={{display: "inline-block", maxWidth: "40%"}}>                                            
+                                        <div className="panel-body col s4" style={{display: "inline-block", maxWidth: "45%"}}>                                            
                                             <form onSubmit={e => {
                                                 e.preventDefault();
                                                 //updateLogo({ variables: { id: data.logo._id, text: text.value, color: color.value, fontSize: parseInt(fontSize.value), backgroundColor: backgroundColor.value, borderColor: borderColor.value, borderRadius: parseInt(borderRadius.value), borderWidth: parseInt(borderWidth.value), padding: parseInt(padding.value), margins: parseInt(margins.value) } });
-                                                updateLogo({ variables: { id: data.logo._id, text: this.state.logoT, color: this.state.logoC, fontSize: this.state.logoFs, backgroundColor: this.state.logoBgc, borderColor: this.state.logoBc, borderRadius: this.state.logoBr, borderWidth: this.state.logoBw, padding: this.state.logoP, margins: this.state.logoM } });
+                                                updateLogo({ variables: { id: data.logo._id, text: this.state.logoT, color: this.state.logoC, fontSize: parseInt(this.state.logoFs), backgroundColor: this.state.logoBgc, borderColor: this.state.logoBc, borderRadius: parseInt(this.state.logoBr), borderWidth: parseInt(this.state.logoBw), padding: parseInt(this.state.logoP), margins: parseInt(this.state.logoM) } });
                                                 text.value = "";
                                                 color.value = "";
                                                 fontSize.value = "";

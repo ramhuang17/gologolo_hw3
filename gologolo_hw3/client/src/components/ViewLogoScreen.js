@@ -48,7 +48,7 @@ class ViewLogoScreen extends Component {
                                         View Logo
                                     </h3>
                                 </div>
-                                <div className="panel-body">
+                                <div className="panel-body col s4" style={{display:"inline-block", maxWidth: "50%"}}>
                                     <dl>
                                         <dt>Text:</dt>
                                         <dd>{data.logo.text}</dd>
@@ -88,7 +88,21 @@ class ViewLogoScreen extends Component {
                                         )}
                                     </Mutation>
                                 </div>
+                                <div style={{color: data.logo.color,
+                                    fontSize: data.logo.fontSize + "pt",
+                                    backgroundColor: data.logo.backgroundColor,
+                                    borderColor: data.logo.borderColor,
+                                    borderRadius: data.logo.borderRadius + "px",
+                                    borderWidth: data.logo.borderWidth + "px",
+                                    borderStyle: "solid",
+                                    padding: data.logo.paddding + "px",
+                                    margin: data.logo.margins + "px",
+                                    position: "absolute",
+                                    display: "inline-block" }} >
+                                {data.logo.text}
                             </div>
+                            </div>
+                            
                         </div>
                     );
                 }}
